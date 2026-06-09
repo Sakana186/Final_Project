@@ -1,24 +1,33 @@
-# Blockchain Service
+# Blockchain Service Setup
 
-`blockchain-service` là HTTP service chịu trách nhiệm đọc trạng thái contract và user directory trên `Sepolia`, đồng thời hỗ trợ một số thao tác admin khi cần.
 
-## Vai trò của service này
+## 1. Yeu cau
 
-- trả health/status cho UI và gateway
-- đọc danh sách user on-chain
-- xác thực đăng nhập theo ví + role
-- kiểm tra quyền truy cập trên contract
-- hỗ trợ `registerUser` và `setUserStatus` nếu bạn chủ động bật backend signer
+- Node.js 22+
+- npm
+- Vi Sepolia co test ETH neu ban muon tu deploy contract
 
-Runtime chuẩn không dùng Hardhat local node. Hardhat chỉ còn dùng để compile/deploy contract lên `Sepolia`.
+Tat ca lenh ben duoi duoc chay tu thu muc goc repo `Medchain`.
 
-## Env
+## 2. Cai dependency
 
-File mẫu:
+```bash
+npm install
+```
 
+## 3. Cau hinh env
+
+Tao hoac cap nhat 2 file sau:
+
+- `.env`
+- `services/blockchain-service/.env`
+
+Ban co the tham khao:
+
+- `.env.example`
 - `services/blockchain-service/.env.example`
 
-Các biến quan trọng:
+Cac bien quan trong:
 
 ```env
 MEDCHAIN_BLOCKCHAIN_SERVICE_HOST=0.0.0.0
@@ -30,50 +39,49 @@ ADMIN_ADDRESS=
 ADMIN_PRIVATE_KEY=
 ```
 
-Ghi chú:
+Luu y:
 
-- `CONTRACT_ADDRESS` là optional override
-- nếu bỏ trống `CONTRACT_ADDRESS`, service sẽ đọc `services/blockchain-service/deployments/sepolia.json`
-- `ADMIN_PRIVATE_KEY` chỉ cần nếu bạn muốn backend tự ký thao tác admin; luồng UI mặc định ký bằng MetaMask ở frontend
+- `SEPOLIA_RPC_URL` la bat buoc de service doc blockchain.
+- `CONTRACT_ADDRESS` la tuy chon. Neu de trong, service se doc tu `services/blockchain-service/deployments/sepolia.json`.
+- `ADMIN_PRIVATE_KEY` chi can khi ban muon deploy contract hoac de backend tu ky thao tac quan tri.
 
-## Deploy contract
-
-Khuyến nghị từ root repo:
+## 4. Compile contract
 
 ```bash
-docker compose build blockchain-service
-docker compose run --rm blockchain-service npm run blockchain:deploy:testnet
+npm run blockchain:compile
 ```
 
-Hoặc:
+## 5. Deploy contract len Sepolia
+
+Bo qua buoc nay neu ban da co `CONTRACT_ADDRESS` hop le.
 
 ```bash
-npm install
-npm run blockchain:compile
 npm run blockchain:deploy:testnet
 ```
 
-## Chạy service
+Sau khi deploy, kiem tra file:
+
+- `services/blockchain-service/deployments/sepolia.json`
+
+## 6. Chay service
 
 ```bash
 npm run blockchain-service
 ```
 
-## Shared runtime asset
+Service mac dinh chay tai:
 
-ABI dùng chung không nằm trong thư mục riêng của service nữa, mà ở:
+- `http://localhost:4100`
 
-- `shared/abi/EHRAccessControl.json`
+## 7. Kiem tra nhanh
 
-Điều này giúp frontend và blockchain-service dùng chung contract interface mà không phụ thuộc mã nguồn của nhau.
+```bash
+curl http://localhost:4100/health
+```
 
-## Endpoint
+Neu ban chay bang Docker tu repo goc:
 
-- `GET /health`
-- `GET /status`
-- `GET /users`
-- `GET /users/:address`
-- `POST /auth/login`
-- `POST /users`
-- `PATCH /users/:address/status`
-- `POST /access/check`
+```bash
+docker compose build blockchain-service
+docker compose up blockchain-service
+```
