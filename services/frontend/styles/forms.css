@@ -1,0 +1,136 @@
+.pagePanel {
+  animation: appear 0.25s ease;
+}
+
+@keyframes appear {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.formGrid,
+.accessGrid,
+.viewerGrid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.formCard label,
+.card label {
+  display: block;
+  font-weight: 700;
+  font-size: 13px;
+  margin: 16px 0 7px;
+}
+
+input,
+select {
+  width: 100%;
+  border: 1px solid #d9e2ef;
+  border-radius: 11px;
+  padding: 12px 13px;
+  background: #fbfdff;
+  color: #0f172a;
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 0 12px;
+  margin-bottom: 18px;
+}
+
+.compactSearch {
+  max-width: 420px;
+}
+
+.searchBox input {
+  border: 0;
+  background: transparent;
+}
+
+.twoCols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.recordEditorLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.8fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.recordEditorLayout.singleColumn {
+  grid-template-columns: minmax(0, 920px);
+}
+
+.compactHeader {
+  margin-bottom: 8px;
+}
+
+.postCreateActions {
+  margin-top: 18px;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 8px;
+}
+
+.timelineItem {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
+  padding: 18px 0;
+  border-top: 1px solid #eef2f7;
+}
+
+.timelineIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 14px;
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.timelineItem p {
+  margin: 5px 0 0;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.authGate {
+  min-height: calc(100vh - 72px);
+  display: grid;
+  place-items: center;
+}
+
+.authCard {
+  width: min(520px, 100%);
+}
+
+.authPill {
+  margin-bottom: 18px;
+  display: inline-flex;
+}

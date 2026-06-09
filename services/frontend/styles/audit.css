@@ -1,0 +1,63 @@
+.auditCard {
+  margin-top: 22px;
+}
+
+.auditScope {
+  margin: 10px 0 0;
+  color: #64748b;
+}
+
+.auditItem {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 14px;
+  padding: 22px 0;
+  border-top: 1px solid #eef2f7;
+}
+
+.auditItem:first-child {
+  border-top: 0;
+}
+
+.auditDot {
+  width: 40px;
+  height: 40px;
+  border-radius: 16px;
+  background: #eaf1ff;
+  color: #2563eb;
+  display: grid;
+  place-items: center;
+}
+
+.auditItem p {
+  margin: 5px 0;
+  color: #64748b;
+}
+
+.auditItem small {
+  display: block;
+  margin-top: 8px;
+  color: #94a3b8;
+}
+
+.auditActor {
+  display: inline-flex;
+  margin-top: 4px;
+  font-size: 0.92rem;
+  color: #2563eb;
+}
+
+.emptyState {
+  min-height: 440px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: #64748b;
+  background: white;
+  border-radius: 24px;
+  border: 1px solid #e5eaf3;
+}
+
+.emptyState h2 {
+  color: #0f172a;
+}

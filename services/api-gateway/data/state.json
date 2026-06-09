@@ -1,0 +1,179 @@
+{
+  "users": [],
+  "userProfiles": {
+    "0xb10bf4f12925fe971a09b04662e5100894eba1bc": "Bác sĩ 1",
+    "0xe2dc5e63a284b9e0bc29337c1ea4ba9ba571fdb9": "Bác sĩ 2",
+    "0xbe871b75219bde936a4b620804bd515ded3a72f2": "Bệnh nhân 1"
+  },
+  "records": [
+    {
+      "id": "HS001",
+      "contractRecordId": 0,
+      "patient": "Bệnh nhân 1",
+      "patientAddress": "0xbe871b75219bde936a4b620804bd515ded3a72f2",
+      "birthday": "01/01/2000",
+      "gender": "Nam",
+      "creator": "Bác sĩ 1",
+      "creatorAddress": "0xb10bf4f12925fe971a09b04662e5100894eba1bc",
+      "diagnosis": "Viêm họng cấp",
+      "lab": "CRP tăng nhẹ",
+      "treatment": "Kháng sinh 5 ngày",
+      "note": "Tái khám sau 3 ngày",
+      "policy": "role:doctor and department:general",
+      "cid": "QmdP1biQefU68EGPhUPzgUsZFQjfMrmVdhfy3gmHLukZdN",
+      "recordHash": "0xacd9c0fd97f61efb60fb53b7b1ca7093ed28e6b2f97e11856a06111627ddb407",
+      "policyHash": "0x99e09852604109a935dd1f6f833585efd37d92b79e3f50c8f4cc2b54a559e733",
+      "txHash": "0x56b2b1c0cf060bb83d167632efd9efc2a7b88cf6e021ae87d0aee83cd8ca3950",
+      "block": "11012745",
+      "createdAt": "10:09 8/6/26",
+      "status": "Đã ghi on-chain",
+      "owner": "PATIENT"
+    }
+  ],
+  "permissions": [
+    {
+      "id": "perm-1e6a938d",
+      "recordId": "HS001",
+      "contractRecordId": 0,
+      "granteeName": "Bác sĩ 2",
+      "granteeAddress": "0xe2dc5e63a284b9e0bc29337c1ea4ba9ba571fdb9",
+      "role": "DOCTOR",
+      "grantedBy": "Bệnh nhân 1",
+      "grantedAt": "10:29 8/6/26",
+      "purpose": "Hội chẩn chuyên khoa tim mạch",
+      "purposeHash": "0x9ff5cedbfba54febc8a41c025d4f49606685b28b05c0f9bafa2ed95b24d8c2fe",
+      "expiredAt": "15/06/2026",
+      "expiredAtUnix": 1781494159,
+      "status": "Đã thu hồi",
+      "txHash": "0x1d7b2c7bd4683bdbb2e3f88ffad32325b5fffe747e9b1ffd145f773dafc13d21"
+    },
+    {
+      "id": "perm-b2e9dd7d",
+      "recordId": "HS001",
+      "contractRecordId": 0,
+      "granteeName": "Bác sĩ 1",
+      "granteeAddress": "0xb10bf4f12925fe971a09b04662e5100894eba1bc",
+      "role": "DOCTOR",
+      "purpose": "Tạo và điều trị hồ sơ",
+      "purposeHash": "0x4e408923c30b1a343ecdfe86f61b37b0d53c8cbad2e072e9b88686a8e4400e87",
+      "expiredAt": "Không giới hạn",
+      "expiredAtUnix": 9007199254740991,
+      "status": "Đang hiệu lực",
+      "grantedBy": "Bệnh nhân 1",
+      "grantedAt": "10:09 8/6/26",
+      "txHash": "0x56b2b1c0cf060bb83d167632efd9efc2a7b88cf6e021ae87d0aee83cd8ca3950"
+    }
+  ],
+  "accessRequests": [
+    {
+      "id": "req-9eb8f3a0",
+      "recordId": "HS001",
+      "contractRecordId": 0,
+      "requesterName": "Bác sĩ 2",
+      "requesterAddress": "0xe2dc5e63a284b9e0bc29337c1ea4ba9ba571fdb9",
+      "requesterRole": "DOCTOR",
+      "purpose": "Hội chẩn chuyên khoa tim mạch",
+      "durationDays": 7,
+      "requestedAt": "10:19 8/6/26",
+      "status": "APPROVED",
+      "txHash": "0xb8b39b2abe475df72f747c02241179004de51c95453a4ebc1d4ef2f67865f75d"
+    }
+  ],
+  "policies": [],
+  "auditLogs": [
+    {
+      "id": "audit-9bb59765",
+      "event": "UserRegistered",
+      "description": "Owner Admin đăng ký Bác sĩ 1 với role PATIENT",
+      "time": "09:58 8/6/26",
+      "txHash": "0xb123b310bf9c66be74076a87253316f22d33ebba2741c4704c1b7057a7dc4a73",
+      "actorAddress": "0xbcc04d165254c25915f55e9b68d0f2689b36d8ec",
+      "actorRole": "ADMIN",
+      "actorName": "Owner Admin"
+    },
+    {
+      "id": "audit-fe809b8c",
+      "event": "UserRegistered",
+      "description": "Owner Admin đăng ký 0xe2DC5E63A284b9E0bC29337C1Ea4BA9BA571fDb9 với role DOCTOR",
+      "time": "09:59 8/6/26",
+      "txHash": "0x8754e45d270f77f26ccae8fe872c9b1a558c1fad3cf1e75edfeacbe27b2bd256",
+      "actorAddress": "0xbcc04d165254c25915f55e9b68d0f2689b36d8ec",
+      "actorRole": "ADMIN",
+      "actorName": "Owner Admin"
+    },
+    {
+      "id": "audit-095e65cb",
+      "event": "RoleAssigned",
+      "description": "Owner Admin gán role DOCTOR cho Bác sĩ 1",
+      "time": "10:01 8/6/26",
+      "txHash": "0x9ac8736dcca37a71082b1eec8afc0b10a7fa67b92e048e1ed93360c603a86ed1",
+      "actorAddress": "0xbcc04d165254c25915f55e9b68d0f2689b36d8ec",
+      "actorRole": "ADMIN",
+      "actorName": "Owner Admin"
+    },
+    {
+      "id": "audit-8d30f25e",
+      "event": "UserRegistered",
+      "description": "Owner Admin đăng ký Bác sĩ 2 với role DOCTOR",
+      "time": "10:02 8/6/26",
+      "txHash": "0xe5a784b667847e865c31311b6dd79198799ad826377897a56d9e4c73ecbb7d7e",
+      "actorAddress": "0xbcc04d165254c25915f55e9b68d0f2689b36d8ec",
+      "actorRole": "ADMIN",
+      "actorName": "Owner Admin"
+    },
+    {
+      "id": "audit-7fecf9d4",
+      "event": "UserRegistered",
+      "description": "Owner Admin đăng ký Bệnh nhân 1 với role PATIENT",
+      "time": "10:03 8/6/26",
+      "txHash": "0xec024ce1ad4705fe0fa7104f16d2dd43d8e89870cd0fd8f254c1bd7f28b1c403",
+      "actorAddress": "0xbcc04d165254c25915f55e9b68d0f2689b36d8ec",
+      "actorRole": "ADMIN",
+      "actorName": "Owner Admin"
+    },
+    {
+      "id": "audit-a1867aa6",
+      "event": "RecordAdded",
+      "description": "Bác sĩ 1 tạo hồ sơ HS001",
+      "time": "10:09 8/6/26",
+      "recordId": "HS001",
+      "txHash": "0x56b2b1c0cf060bb83d167632efd9efc2a7b88cf6e021ae87d0aee83cd8ca3950",
+      "actorAddress": "0xb10bf4f12925fe971a09b04662e5100894eba1bc",
+      "actorRole": "DOCTOR",
+      "actorName": "Bác sĩ 1"
+    },
+    {
+      "id": "audit-a8382ba1",
+      "event": "AccessRequested",
+      "description": "Bác sĩ 2 yêu cầu truy cập hồ sơ HS001",
+      "time": "10:19 8/6/26",
+      "recordId": "HS001",
+      "txHash": "0xb8b39b2abe475df72f747c02241179004de51c95453a4ebc1d4ef2f67865f75d",
+      "actorAddress": "0xe2dc5e63a284b9e0bc29337c1ea4ba9ba571fdb9",
+      "actorRole": "DOCTOR",
+      "actorName": "Bác sĩ 2"
+    },
+    {
+      "id": "audit-11b5593b",
+      "event": "AccessGranted",
+      "description": "Bệnh nhân 1 cấp quyền cho Bác sĩ 2",
+      "time": "10:29 8/6/26",
+      "recordId": "HS001",
+      "txHash": "0xddce5b589821eecd5e180cafc91e37b5d835398fdc9ffe3502a32ade0eb3138f",
+      "actorAddress": "0xbe871b75219bde936a4b620804bd515ded3a72f2",
+      "actorRole": "PATIENT",
+      "actorName": "Bệnh nhân 1"
+    },
+    {
+      "id": "audit-4980af32",
+      "event": "AccessRevoked",
+      "description": "Bệnh nhân 1 thu hồi quyền của Bác sĩ 2",
+      "time": "10:30 8/6/26",
+      "recordId": "HS001",
+      "txHash": "0x1d7b2c7bd4683bdbb2e3f88ffad32325b5fffe747e9b1ffd145f773dafc13d21",
+      "actorAddress": "0xbe871b75219bde936a4b620804bd515ded3a72f2",
+      "actorRole": "PATIENT",
+      "actorName": "Bệnh nhân 1"
+    }
+  ]
+}

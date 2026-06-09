@@ -1,0 +1,34 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "vite --config vite.config.js",
+    "frontend-service": "vite --config vite.config.js",
+    "gateway-service": "node services/api-gateway/server.js",
+    "storage-service:setup-python": "python3 services/storage-service/scripts/setup_python_env.py",
+    "storage-service": "node services/storage-service/server.js",
+    "blockchain-service": "node services/blockchain-service/server.js",
+    "blockchain:compile": "hardhat --config services/blockchain-service/hardhat.config.js compile",
+    "blockchain:deploy": "hardhat --config services/blockchain-service/hardhat.config.js run services/blockchain-service/scripts/deploy.js --network sepolia",
+    "blockchain:deploy:testnet": "hardhat --config services/blockchain-service/hardhat.config.js run services/blockchain-service/scripts/deploy.js --network sepolia",
+    "bootstrap:sepolia": "npm run blockchain:compile && npm run blockchain:deploy:testnet",
+    "docker:deploy:testnet": "docker compose build blockchain-service && docker compose run --rm blockchain-service npm run blockchain:deploy:testnet",
+    "build": "vite build --config vite.config.js",
+    "preview": "vite preview --config vite.config.js",
+    "docker:up": "docker compose up --build",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "dotenv": "^17.2.1",
+    "vite": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "lucide-react": "latest"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ethers": "^4.0.2",
+    "ethers": "^6.13.5",
+    "hardhat": "^3.0.0"
+  }
+}

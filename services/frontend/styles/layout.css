@@ -1,0 +1,211 @@
+.appShell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 30%),
+    radial-gradient(circle at top right, rgba(16, 185, 129, 0.10), transparent 28%),
+    #f6f8fc;
+}
+
+.sidebar {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0b1b3f, #071326);
+  color: #eef6ff;
+  padding: 28px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  box-shadow: 14px 0 35px rgba(15, 23, 42, 0.16);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 14px;
+}
+
+.brandIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #2f6df6, #9fd3ff);
+  display: grid;
+  place-items: center;
+}
+
+.brand h1 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.brand p {
+  margin: 4px 0 0;
+  font-size: 11px;
+  opacity: 0.74;
+}
+
+.roleSwitcher {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.roleButton {
+  border: 0;
+  border-radius: 14px;
+  padding: 11px 12px;
+  background: transparent;
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.roleButton.selected {
+  color: white;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.roleButton.patient.selected {
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+}
+
+.roleButton.doctor.selected {
+  background: linear-gradient(135deg, #2563eb, #4f7cff);
+}
+
+.roleButton.admin.selected {
+  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.navItem {
+  border: 0;
+  color: #cbd5e1;
+  background: transparent;
+  padding: 13px 14px;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.navItem:hover,
+.navItem.active {
+  background: linear-gradient(135deg, #1d4ed8, #3069f4);
+  color: white;
+}
+
+.profileCard {
+  margin-top: auto;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.avatar,
+.miniAvatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #dbeafe, #8ec5ff);
+  color: #0f172a;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+}
+
+.avatar.patient {
+  background: linear-gradient(135deg, #dcfce7, #86efac);
+}
+
+.avatar.admin {
+  background: linear-gradient(135deg, #ede9fe, #c4b5fd);
+}
+
+.miniAvatar {
+  width: 34px;
+  height: 34px;
+  font-size: 11px;
+}
+
+.profileCard strong {
+  display: block;
+}
+
+.profileCard p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  opacity: 0.74;
+}
+
+.walletBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #cbd5e1;
+  padding: 0 16px;
+  font-size: 12px;
+}
+
+.logoutBtn {
+  margin: 14px 16px 0;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.mainContent {
+  padding: 36px 42px;
+  overflow: auto;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.topbar,
+.pageHeader,
+.accessHeader,
+.viewerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.topbar h2,
+.pageHeader h2,
+.accessHeader h2,
+.viewerHeader h2,
+.pagePanel h2 {
+  margin: 0 0 6px;
+  font-size: 28px;
+  letter-spacing: -0.04em;
+}
+
+.topbar p,
+.accessHeader p,
+.muted {
+  margin: 0;
+  color: #64748b;
+}
+
+.topActions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}

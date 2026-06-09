@@ -1,0 +1,67 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 22px;
+}
+
+th {
+  text-align: left;
+  color: #64748b;
+  font-size: 12px;
+  padding-bottom: 12px;
+}
+
+td {
+  padding: 16px 8px;
+  border-top: 1px solid #eef2f7;
+}
+
+.person {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.roleTag {
+  background: #eef2f7;
+  padding: 6px 10px;
+  border-radius: 9px;
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.roleTag.patient {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.roleTag.doctor {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.roleTag.admin {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+
+.requestList {
+  display: grid;
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.requestCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.requestCard p {
+  color: #64748b;
+}
+
+.requestActions {
+  display: flex;
+  gap: 10px;
+}

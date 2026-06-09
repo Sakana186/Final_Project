@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.agent/
+.agents/
+.codex/
+docs/
+
+services/api-gateway/.env
+services/storage-service/.env
+services/blockchain-service/.env
+
+services/blockchain-service/artifacts/
+services/blockchain-service/cache/
+
+*.log

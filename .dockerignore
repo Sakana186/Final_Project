@@ -1,0 +1,9 @@
+node_modules
+dist
+.git
+*.log
+services/api-gateway/.env
+services/storage-service/.env
+services/blockchain-service/.env
+services/storage-service/.venv
+services/storage-service/data/kpabe_keystore.json

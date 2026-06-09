@@ -1,0 +1,89 @@
+services:
+  blockchain-service:
+    build:
+      context: .
+      dockerfile: docker/blockchain.Dockerfile
+    environment:
+      MEDCHAIN_BLOCKCHAIN_SERVICE_HOST: 0.0.0.0
+      MEDCHAIN_BLOCKCHAIN_SERVICE_PORT: 4100
+      MEDCHAIN_NETWORK: ${MEDCHAIN_NETWORK:-sepolia}
+      SEPOLIA_RPC_URL: ${SEPOLIA_RPC_URL:-https://ethereum-sepolia-rpc.publicnode.com}
+      CONTRACT_ADDRESS: ${CONTRACT_ADDRESS:-}
+      ADMIN_ADDRESS: ${ADMIN_ADDRESS:-}
+      ADMIN_PRIVATE_KEY: ${ADMIN_PRIVATE_KEY:-}
+    ports:
+      - "4100:4100"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:4100/health').then((response) => { if (!response.ok) process.exit(1); }).catch(() => process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    volumes:
+      - ./services/blockchain-service/deployments:/app/services/blockchain-service/deployments
+
+  storage-service:
+    build:
+      context: .
+      dockerfile: docker/storage.Dockerfile
+    environment:
+      MEDCHAIN_STORAGE_HOST: 0.0.0.0
+      MEDCHAIN_STORAGE_PORT: 4200
+      MEDCHAIN_PYTHON_BIN: python3
+      MEDCHAIN_LOCAL_PACKAGE_DIR: data/packages
+      PINATA_JWT: ${PINATA_JWT:-}
+      PINATA_GATEWAY_BASE: ${PINATA_GATEWAY_BASE:-https://gateway.pinata.cloud/ipfs}
+    ports:
+      - "4200:4200"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:4200/health').then((response) => { if (!response.ok) process.exit(1); }).catch(() => process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+    volumes:
+      - ./services/storage-service/data:/app/services/storage-service/data
+
+  api-gateway:
+    build:
+      context: .
+      dockerfile: docker/gateway.Dockerfile
+    environment:
+      MEDCHAIN_GATEWAY_HOST: 0.0.0.0
+      MEDCHAIN_GATEWAY_PORT: 4001
+      MEDCHAIN_BLOCKCHAIN_SERVICE_URL: http://blockchain-service:4100
+      MEDCHAIN_STORAGE_SERVICE_URL: http://storage-service:4200
+      MEDCHAIN_ADMIN_DISPLAY_NAME: ${MEDCHAIN_ADMIN_DISPLAY_NAME:-Quản trị viên}
+    depends_on:
+      blockchain-service:
+        condition: service_healthy
+      storage-service:
+        condition: service_healthy
+    ports:
+      - "4001:4001"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:4001/api/health').then((response) => { if (!response.ok) process.exit(1); }).catch(() => process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    volumes:
+      - ./services/api-gateway/data:/app/services/api-gateway/data
+
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/frontend.Dockerfile
+    environment:
+      VITE_MEDCHAIN_API_URL: http://localhost:4001/api
+    depends_on:
+      api-gateway:
+        condition: service_healthy
+    ports:
+      - "5173:5173"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:5173').then((response) => { if (!response.ok) process.exit(1); }).catch(() => process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
